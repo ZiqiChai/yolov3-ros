@@ -20,8 +20,8 @@ Service_name = '/yolov3_detection_service'
 class yolov3_detection_client:
     def __init__(self):
         rospy.wait_for_service(Service_name)
-        self._image_sub = rospy.Subscriber("/camera/color/image_raw",Image,self.callback)
-        self._image_pub = rospy.Publisher("/detection/results",Image,queue_size=10)
+        self._image_sub = rospy.Subscriber("/camera/color/image_raw",Image,self.callback, queue_size=1)
+        # self._image_pub = rospy.Publisher("/detection/results",Image,queue_size=10)
         self._bridge = CvBridge()
         self._yolov3_detection_client = rospy.ServiceProxy(Service_name, DetectionTask)
 
