@@ -71,7 +71,6 @@ class yolov3_detection_server:
         self._parser = argparse.ArgumentParser()
         self._parser = parser
         self._opt = self._parser.parse_args()
-        print_parser(self._opt)
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -209,10 +208,10 @@ class yolov3_detection_server:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--image_folder", type=str, default="data/samples", help="path to dataset")
-    parser.add_argument("--model_def", type=str, default="config/yolov3-custom.cfg", help="path to model definition file")
-    parser.add_argument("--weights_path", type=str, default="checkpoints/yolov3_ckpt_39.pth", help="path to weights file")
-    parser.add_argument("--class_path", type=str, default="data/custom/classes.names", help="path to class label file")
+    parser.add_argument("--image_folder", type=str, default="../PyTorch_YOLOv3_Py27/assets", help="path to dataset")
+    parser.add_argument("--model_def", type=str, default="../PyTorch_YOLOv3_Py27/config/yolov3-custom.cfg", help="path to model definition file")
+    parser.add_argument("--weights_path", type=str, default="../PyTorch_YOLOv3_Py27/checkpoints/yolov3_ckpt_399.pth", help="path to weights file")
+    parser.add_argument("--class_path", type=str, default="../PyTorch_YOLOv3_Py27/data/custom/classes.names", help="path to class label file")
     parser.add_argument("--conf_thres", type=float, default=0.2, help="object confidence threshold")
     parser.add_argument("--nms_thres", type=float, default=0.2, help="iou thresshold for non-maximum suppression")
     parser.add_argument("--batch_size", type=int, default=1, help="size of the batches")
